@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Existence Check</title>
+</head>
+<body>
+<h1> 3411191130 AULANI PUTRI DSE-C</h1>
+<form name="myForm" action="" onsubmit="return validateform()" method="POST">
+<input type="text" id="username" name="username">
+<input type="submit" value="Submit">
+</form>
+<script type="text/javascript">
+	function validateform() {
+		var user = document.myForm.username.value;
+		if(user == "") {
+			alert("Username tidak boleh kosong");
+			return false;
+		}else {
+			return true;
+		}
+	}
+</script>
+</body>
+</html>

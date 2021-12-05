@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Implementasi Interface</title>
+</head>
+<body>
+<!-- AULANI PUTRI - 3411191130 - DSE-C -->
+    <form  name="formTugas" id="tugasku" action="#">
+        <table>
+            <tr>
+                <td><input type="text" name="username" id="username" placeholder="Username"></td>
+            </tr>
+            <tr>
+                <td><input type="password" name="password" id="pass" placeholder="Password"></td>
+            </tr>
+            <tr>
+                <td><input type="password" name="repeat" id="repeat" placeholder="Ulangi Password"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="email" id="email" placeholder="Email"></td>
+            </tr>
+            <tr>
+                <td><input type="number" name="telp" id="telp" placeholder="Nomor Telepon"></td>
+            </tr>
+            <tr>
+                <td><textarea id="alamat" style="width: 167px;" placeholder="Alamat"></textarea></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="" value="Submit" onclick="checks()"></td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+
+        let username = document.getElementById('username');
+        let password = document.getElementById('pass');
+        let pass_repeat = document.getElementById('repeat');
+        let email = document.getElementById('email');
+        let telp = document.getElementById('telp');
+        let alamat = document.getElementById('alamat');
+        
+        const checks = function(){
+            user_check();
+            pass_check();
+            email_check();
+            telp_check();
+            alamat_check();
+            
+        }
+
+        const user_check = function(){
+            
+            let re_username = /(\w){3,15}/g;
+
+            if (username.value.match(re_username) && username.value.length <= 15) {
+                return true;
+            } else {
+                alert('Username harus terdiri dari 3-15 karakter!');
+                return false;
+            }
+        }
+
+        const pass_check = function(){
+            
+            let re_password = /(\w).{4,}/g;
+
+            if (password.value.match(re_password)) {
+                if (password.value === pass_repeat.value) {
+                    return true;
+                } else {
+                    alert('Masukkan password yang sama!')
+                    return false;
+                }
+            } else {
+                alert('Password minimal 4 karakter dan mengandung huruf besar, simbol, dan angka!');
+                return false;
+            }
+        }
+
+        const email_check = function(){
+
+            let re_email = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/g;
+
+            if (email.value.match(re_email)) {
+                return true;
+            } else {
+                alert('Masukkan format email yang benar!');
+                return false;
+            }
+        }
+
+        const telp_check = function(){
+
+            let re_telp = /\+?([ -]?\d+)+|\(\d+\)([ -]\d+)/g;
+
+            
+            if (telp.value.match(re_telp) && telp.value.length >= 11 && telp.value.length <= 12) {
+                return true;
+            } else {
+                alert('Masukkan nomor telepon (10 - 12 digit angka)!');
+                return false;
+            }
+        }
+
+        const alamat_check = function(){
+
+            if (!alamat.value == '') {
+                return true;
+            } else {
+                alert('Alamat tidak boleh kosong!');
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
